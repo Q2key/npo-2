@@ -24,7 +24,7 @@ namespace Npo_2
             private static void Out(List<int> output )
             {
                 var outputstr = output.Aggregate(string.Empty, (current, t) => current + (t.ToString()+" "));
-                File.WriteAllText(@"C:\output2.txt",outputstr);             
+                File.WriteAllText(@"C:\output.txt",outputstr);             
             }
 
             public void CreateGraf(string path)
