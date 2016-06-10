@@ -14,7 +14,7 @@ namespace Npo_2
         private static void Main(string[] args)
         {
             Matrix m = new Matrix();
-            m.CreateGraf(@"D:\input.txt");
+            m.CreateGraf(@"С:\input.txt");
             Console.ReadKey();
         }
 
@@ -24,11 +24,17 @@ namespace Npo_2
             private static void Out(List<int> output )
             {
                 var outputstr = output.Aggregate(string.Empty, (current, t) => current + (t.ToString()+" "));
-                File.WriteAllText(@"D:\output2.txt",outputstr);             
+                File.WriteAllText(@"C:\output2.txt",outputstr);             
             }
 
             public void CreateGraf(string path)
             {
+                if (!File.Exists(path))
+                {
+                    Console.WriteLine("File is not exists");
+                    return;
+                }
+
                 var header =
                     File.ReadAllLines(path)
                         .Skip(0)

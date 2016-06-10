@@ -3,3 +3,9 @@ c:\users\dtocque\documents\visual studio 2015\Projects\Npo-2\Npo-2\bin\Debug\Npo
 c:\users\dtocque\documents\visual studio 2015\Projects\Npo-2\Npo-2\bin\Debug\Npo-2.pdb
 c:\users\dtocque\documents\visual studio 2015\Projects\Npo-2\Npo-2\obj\Debug\Npo-2.exe
 c:\users\dtocque\documents\visual studio 2015\Projects\Npo-2\Npo-2\obj\Debug\Npo-2.pdb
+D:\VSP\npo2\Npo-2\bin\Debug\Npo-2.exe.config
+D:\VSP\npo2\Npo-2\obj\Debug\Npo-2.exe
+D:\VSP\npo2\Npo-2\obj\Debug\Npo-2.pdb
+D:\VSP\npo2\Npo-2\bin\Debug\Npo-2.exe
+D:\VSP\npo2\Npo-2\bin\Debug\Npo-2.pdb
+D:\VSP\npo2\Npo-2\obj\Debug\Npo-2.csprojResolveAssemblyReference.cache
