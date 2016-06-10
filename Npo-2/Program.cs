@@ -14,16 +14,16 @@ namespace Npo_2
         private static void Main(string[] args)
         {
             Matrix m = new Matrix();
-            m.CreateGraf(@"С:\input.txt");
+            m.CreateGraf(@"C:\input.txt");
             Console.ReadKey();
         }
 
 
         private class Matrix
         {
-            private static void Out(List<int> output )
+            private static void Out(List<int> output, int startpoint )
             {
-                var outputstr = output.Aggregate(string.Empty, (current, t) => current + (t.ToString()+" "));
+                var outputstr = output.Aggregate(startpoint.ToString() + " ", (current, t) => current + (t.ToString()+ " "));
                 File.WriteAllText(@"C:\output.txt",outputstr);             
             }
 
@@ -74,44 +74,35 @@ namespace Npo_2
                 }
                 Console.WriteLine();
 
-                var temp = new List<List<int>>();
-                var patharr = new List<int>();
-                for (var i = 0; i < g.Length; i++)
-                {
-                    for (var j = 0; j < g[i].Length; j++)
+                var m = new List<int>();
+                var mlist = new List<List<int>>();
+                var t = startp;
+                var st = 1;
+                foreach (var e in g)
+                {                  
+                    while (e[0] == t)
                     {
-                        if (g[i][j] == startp )
+                        Console.Write("\nStep " + st + " Start => " + startp + " Next " + e[1]);
+                        m.Add(e[1]);
+                        st++;
+                        if (e[1] == destp)
                         {
-                            temp.Add(new List<int>(g[i])); 
+                            Console.WriteLine(" End point finded");
+                            m = new List<int>();
+                            st = 1;
                         }
+                        else if (!mlist.Contains(m))
+                        {
+                            mlist.Add(m);
+                        }
+                        t = e[1];
                     }
                 }
-                patharr.Add(startp);
-                foreach (var list in temp)
-                {
-                    Console.WriteLine(@"Potential way - start {0} dest {1}", list[0], list[1]);
-                    var startptr = list[1];
-                    foreach (var edgelist in g)
-                    {
-                        if (edgelist[0] == startptr)
-                        {   
-
-                            startptr = edgelist[0];
-                            patharr.Add(startptr);
-                            foreach (var subedges in g)
-                            {
-                                if (subedges[0] == startptr)
-                                {
-                          
-                                    patharr.Add(edgelist[1]);
-                                }
-                            }
-                        }
-                    }
-                }
-                Console.Write("Corrected path : ");
-                patharr.ToList().ForEach(Console.Write);
-                Out(patharr);
+                mlist.Sort((e1,e2)=>e1.Count.CompareTo(e2.Count));
+                var shortst = mlist[0];
+                Console.Write("Corrected shortest path : " + " C " + mlist.Count);       
+                Out(shortst,startp); 
+                        
             }
         }
     }
