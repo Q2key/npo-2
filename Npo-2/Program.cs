@@ -1,11 +1,7 @@
 ﻿using System;
-using System.CodeDom;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Xml;
 
 namespace Npo_2
 {
@@ -14,11 +10,9 @@ namespace Npo_2
         private static void Main(string[] args)
         {
             Matrix m = new Matrix();
-            m.CreateGraf(@"C:\input.txt");
+            m.CreateGraf(@"С:\input.txt");
             Console.ReadKey();
         }
-
-
         private class Matrix
         {
             private static void Out(List<int> output, int startpoint )
@@ -34,7 +28,6 @@ namespace Npo_2
                     Console.WriteLine("File is not exists");
                     return;
                 }
-
                 var header =
                     File.ReadAllLines(path)
                         .Skip(0)
@@ -51,11 +44,8 @@ namespace Npo_2
                 Console.Write(@"Edges count {0}", edges);
                 Console.Write(@" Start point {0}",startp);
                 Console.Write(@" Dest point {0}", destp);
-
                 Console.WriteLine();
-
                 var sarray = File.ReadAllLines(path).Skip(1).ToArray();
-
                 var g = new int[edges][];
 
                 for (var i = 0; i < edges; i++)
@@ -78,31 +68,41 @@ namespace Npo_2
                 var mlist = new List<List<int>>();
                 var t = startp;
                 var st = 1;
+
                 foreach (var e in g)
-                {                  
-                    while (e[0] == t)
+                {
+                    if (e[0] == startp)
                     {
-                        Console.Write("\nStep " + st + " Start => " + startp + " Next " + e[1]);
-                        m.Add(e[1]);
-                        st++;
-                        if (e[1] == destp)
+                        foreach (var se in g)
                         {
-                            Console.WriteLine(" End point finded");
-                            m = new List<int>();
-                            st = 1;
-                        }
-                        else if (!mlist.Contains(m))
-                        {
-                            mlist.Add(m);
-                        }
-                        t = e[1];
+                            while (se[0] == t)
+                            {   
+                                Console.ForegroundColor = ConsoleColor.Red;
+                                Console.Write("\nStep " + st + " Start " + startp + " Next => " + se[1]);
+                                m.Add(se[1]);
+                                st++;
+                                if (se[1] == destp)
+                                {
+                                    mlist.Add(m);
+                                    Console.WriteLine(" End point finded");
+                                    m = new List<int>();
+                                    st = 1;
+                                }
+                                t = se[1];
+                            }
+                        }                                                
                     }
                 }
                 mlist.Sort((e1,e2)=>e1.Count.CompareTo(e2.Count));
+                if (mlist.Count == 0)
+                {
+                    Console.WriteLine("\nNo possibly way");
+                    return;;
+                }
                 var shortst = mlist[0];
-                Console.Write("Corrected shortest path : " + " C " + mlist.Count);       
-                Out(shortst,startp); 
-                        
+                Console.ForegroundColor = ConsoleColor.Cyan;;
+                Console.Write("\nCorrected shortest path : " + " C " + mlist.Count);       
+                Out(shortst,startp);                        
             }
         }
     }

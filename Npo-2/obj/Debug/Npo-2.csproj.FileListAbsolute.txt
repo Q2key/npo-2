@@ -9,3 +9,9 @@ D:\VSP\npo2\Npo-2\obj\Debug\Npo-2.pdb
 D:\VSP\npo2\Npo-2\bin\Debug\Npo-2.exe
 D:\VSP\npo2\Npo-2\bin\Debug\Npo-2.pdb
 D:\VSP\npo2\Npo-2\obj\Debug\Npo-2.csprojResolveAssemblyReference.cache
+C:\Users\Dtocque\Desktop\npo-2\Npo-2\bin\Debug\Npo-2.exe.config
+C:\Users\Dtocque\Desktop\npo-2\Npo-2\obj\Debug\Npo-2.exe
+C:\Users\Dtocque\Desktop\npo-2\Npo-2\obj\Debug\Npo-2.pdb
+C:\Users\Dtocque\Desktop\npo-2\Npo-2\bin\Debug\Npo-2.exe
+C:\Users\Dtocque\Desktop\npo-2\Npo-2\bin\Debug\Npo-2.pdb
+C:\Users\Dtocque\Desktop\npo-2\Npo-2\obj\Debug\Npo-2.csprojResolveAssemblyReference.cache
