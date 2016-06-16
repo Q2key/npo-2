@@ -83,7 +83,6 @@ namespace Npo2
                                 Console.WriteLine("Loop");
                                 k++;
                                 t--;
-
                             }
                             if(m[t, end - 1] == 1)
                             {
