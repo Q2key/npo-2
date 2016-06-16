@@ -56,7 +56,7 @@ namespace Npo2
             List<List<int>> plist = new List<List<int>>();
 
             if (m[start - 1, end - 1] == 1)
-            {   
+            {
                 Console.WriteLine("\nFrom {0} => {1}", start, end);
                 Console.WriteLine("Sortest path finded");
                 plist.Add(new List<int>() {end});
@@ -67,37 +67,29 @@ namespace Npo2
             {
                 var k = 0;
                 var tlist = new List<int>();
-                if (m[next, i] == 1)
+                if (m[next, i] != 1) continue;
+                var t = i;
+                Console.WriteLine("\nFrom {0} => {1}", start, i + 1);
+                tlist.Add(i + 1);
+                while (k < m.GetLength(0))
                 {
-                    var t = i;
-                    Console.WriteLine("\nFrom {0} => {1}", start, i + 1);
-                    tlist.Add(i + 1);
-                    while (k < m.GetLength(0))
+                    if (m[t, k] == 1)
                     {
-                        if (k<m.GetLength(0)&& m[t, k] == 1)
+                        tlist.Add(k + 1);
+                        Console.WriteLine("Cur {0} Next => {1}", t + 1, k + 1);
+
+                        if (m[t, end - 1] == 1)
                         {
-                            tlist.Add(k + 1);
-                            Console.WriteLine("Cur {0} Next => {1}", t + 1, k + 1);
-                            while (k<i && m[start-1,k] == m[t,end-1])
-                            {
-                                Console.WriteLine("Loop");
-                                k++;
-                                t--;
-                            }
-                            if(m[t, end - 1] == 1)
-                            {
-                                plist.Add(tlist);
-                                tlist = new List<int>();
-                                Console.WriteLine("End point finded");
-                            }
-                            else
-                            {
-                                t = k;
-                                k = 0;
-                            }
+                            plist.Add(tlist);
+                            tlist = new List<int>();
+                            Console.WriteLine("End point finded");
                         }
-                        k++;
+                        else
+                        {
+                            t = k;                              
+                        }
                     }
+                    k++;
                 }
             }
             foreach (var path in plist)
